@@ -11,6 +11,9 @@ public class AddDeliverableServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+    	HttpSession session = request.getSession(false);
+    	
+        int studentID = (int) session.getAttribute("studentID");
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         String dueDate = request.getParameter("dueDate");
@@ -22,7 +25,7 @@ public class AddDeliverableServlet extends HttpServlet {
         d.setHanded(false);
         d.setCategory("General");
         d.setStatus("Pending");
-        d.setStudentID(1);
+        d.setStudentID(studentID);
 
         TaskManager tm = new TaskManager();
         tm.createDeliverable(d);
