@@ -102,6 +102,31 @@ public class TaskManager {
         }
     }
 
+    public List<Deliverable> getUpcomingDeadlines(int studentID, int days) {
+        String sql = "SELECT deliverableID, title, description, dueDate, isHanded, category, status, studentID "
+                + "FROM deliverable "
+                + "WHERE studentID = ? AND isHanded = FALSE "
+                + "AND dueDate BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL ? DAY) "
+                + "ORDER BY dueDate ASC";
+        List<Deliverable> deliverables = new ArrayList<>();
+ 
+        try (Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, studentID);
+            statement.setInt(2, days);
+ 
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    deliverables.add(mapRowToDeliverable(resultSet));
+                }
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+ 
+        return deliverables;
+    }
+ 
     private Deliverable mapRowToDeliverable(ResultSet resultSet) throws SQLException {
         return new Deliverable(
                 resultSet.getInt("deliverableID"),
