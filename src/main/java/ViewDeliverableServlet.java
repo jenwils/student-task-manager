@@ -35,6 +35,15 @@ public class ViewDeliverableServlet extends HttpServlet {
         out.println("<li><a href='add_task.html'>Add Task</a></li>");
         out.println("<li style='float:right'><a href='logout'>Logout</a></li>");
         out.println("</ul>");
+        
+        out.println("<br>");
+        out.println("<div class='search_bar'>");
+        out.println("<form action='search' method='get'>");
+        out.println("<input type='text' name='keyword' placeholder='Search task...' required>");
+        out.println("<button type='submit'>Search</button>");
+        out.println("</form>");
+        out.println("</div>");
+        
         out.println("<h1>All Tasks</h1>");
 
         if (task.isEmpty()) {
