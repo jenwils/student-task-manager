@@ -22,10 +22,10 @@ public class TaskManager {
             statement.setDate(3, deliverable.getDueDate());
             statement.setBoolean(4, deliverable.isHanded());
             statement.setString(5, deliverable.getCourse());
-            statement.setString(6, deliverable.getCategory());
-            statement.setString(7, deliverable.getStatus());
-            statement.setInt(8, deliverable.getStudentID());
-
+            statement.setString(6, deliverable.getPriority());
+            statement.setString(7, deliverable.getCategory());
+            statement.setString(8, deliverable.getStatus());
+            statement.setInt(9, deliverable.getStudentID());
             return statement.executeUpdate() > 0;
         } catch (SQLException exception) {
             exception.printStackTrace();
