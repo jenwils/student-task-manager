@@ -10,7 +10,7 @@ public class RegisterServlet extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("register.html");
+        response.sendRedirect("Login_Register.html");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +28,7 @@ public class RegisterServlet extends HttpServlet {
                 password == null || password.isBlank()) {
 
                 session.setAttribute("error", "fields");
-                response.sendRedirect("register.html");
+                response.sendRedirect("Login_Register.html");
                 return;
             }
         
@@ -41,10 +41,10 @@ public class RegisterServlet extends HttpServlet {
         // Saves user input
         if (sm.createStudent(name.trim(), email.trim(), passwordHash)) {
             session.setAttribute("success", "registered");
-            response.sendRedirect("login.html");
+            response.sendRedirect("Login_Register.html");
         } else {
             session.setAttribute("error", "failed");
-            response.sendRedirect("register.html");
+            response.sendRedirect("Login_Register.html");
         }
     }
 }

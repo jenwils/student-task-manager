@@ -9,7 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 
 @WebServlet("/login")
-public class LoginServlet {
+public class LoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -22,7 +22,12 @@ public class LoginServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
-        HttpSession session = request.getSession();
+        HttpSession oldSession = request.getSession(false);
+        if (oldSession != null) {
+            oldSession.invalidate();
+        }
+ 
+        HttpSession session = request.getSession(true);
 
         if (email == null || email.isBlank() || password == null || password.isBlank()) {
         	session.setAttribute("error", "fields");
@@ -38,14 +43,7 @@ public class LoginServlet {
                 response.sendRedirect("login.html");
                 return;
             }
- 
-        HttpSession oldSession = request.getSession(false);
-        if (oldSession != null) {
-            oldSession.invalidate();
-        }
-        
-        session = request.getSession(true);
-        
+       
         session.setAttribute("studentID", student.getStudentID());
         session.setAttribute("studentName", student.getName());
         session.setAttribute("studentEmail", student.getEmail());
