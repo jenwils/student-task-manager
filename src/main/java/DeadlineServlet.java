@@ -27,8 +27,16 @@ public class DeadlineServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        out.println("<link rel='stylesheet' type='text/css' href='css/style.css'>");
+        
+        out.println("<ul class='navbar'>");
+        out.println("<li><a href='viewTasks'>Tasks</a></li>");
+        out.println("<li><a href='deadlines'>Deadlines</a></li>");   
+        out.println("<li><a href='add_task.html'>Add Task</a></li>");
+        out.println("<li style='float:right'><a href='logout'>Logout</a></li>");
+        out.println("</ul>");
 
-        out.println("<h1>Upcoming Deadlines (Next 7 Days)</h1>");
+        out.println("<h1>Upcoming Deadlines</h1>");
 
         if (upcoming.isEmpty()) {
             out.println("<p>No upcoming deadlines in the next 7 days.</p>");
@@ -69,7 +77,5 @@ public class DeadlineServlet extends HttpServlet {
             out.println("</table>");
         }
 
-        out.println("<br><a href='viewTasks'>Back to All Tasks</a>");
-        out.println("<br><a href='index.html'>Home Page</a>");
     }
 }
