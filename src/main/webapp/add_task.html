@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<head>
+    <title>Student Task Manager</title>
+</head>
+
+<body>
+
+<ul class="navbar">
+    <li><a href="viewTasks">Tasks</a></li>
+    <li><a href="deadlines">Deadlines</a></li>
+    <li><a href="add_task.html">Add Task</a></li>
+    <li style="float:right"><a href="logout">Logout</a></li>
+</ul>
+
+<h1>Student Task Manager</h1>
+
+<div class="search_bar">
+    <form action="search" method="get">
+        <input type="text" name="keyword" placeholder="Search task..." required>
+        <button type="submit">Search</button>
+    </form>
+</div>
+<br>
+<form action="addTask" method="post">
+
+	<label>Task Name</label><br>
+    <input type="text" name="title" placeholder="Task Name" required><br><br>
+
+	<label>Due Date</label><br>
+    <input type="date" name="dueDate" required><br><br>
+    
+    <label>Course</label><br>
+	<input type="text" name="course"><br><br>
+
+	<label>Description</label><br>
+    <textarea name="description" placeholder="Task Description"></textarea><br><br>
+    
+    <label>Category</label><br>
+    <select name="category">
+        <option value="General">General</option>
+        <option value="Assignment">Assignment</option>
+        <option value="Exam">Exam</option>
+    </select><br><br>
+    
+    <label>Status</label><br>
+    <select name="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select><br><br>
+
+    <button type="submit">Add Task</button>
+
+</form>
+
+<br>
+
+</body>
+</html>

@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="css/style.css">
     <head>
         <title>Login and Register Page</title>
     </head>
     <body>
     
-        <h1>Login</h1>
-        <form action="login" method="post">
         
-            <label>
-            	Email
-            </label><br>
-            <input type="text" name="email" placeholder="Email"/><br><br>
-            
-            <label>
-                Password
-            </label><br>
-            <input type="password" name="password" placeholder="Password"/><br><br>
-        	<button type="submit">Login</button>
-        </form>
         
-        <h1>Register</h1>
-        <form action="register" method="post">
-            <label>
-                Register
-            </label>
-            
-            <label>Name</label><br>
-    		<input type="text" name="name" placeholder="Name"/><br><br>
-  			
-  			<label>Email</label><br>
-            <input type="text" name="email" placeholder="Email"/><br><br>
-            
-            <label>
-                Password
-            </label><br>
-            <input type="password" name="password" placeholder="Password"/><br><br>
-            <button type="submit">Register</button>
-        </form>
+        <div class="login_register_box">
+	        <form action="login" method="post">
+	        	<h2>Login</h2>
+	            <label>
+	            	Email
+	            </label><br>
+	            <input type="text" name="email" placeholder="Email"/><br><br>
+	            
+	            <label>
+	                Password
+	            </label><br>
+	            <input type="password" name="password" placeholder="Password"/><br><br>
+	        	<button type="submit">Login</button>
+	        </form>
+	        
+	       
+	        <form action="register" method="post">
+	            <h2>Register</h2>
+	            <label>Name</label><br>
+	    		<input type="text" name="name" placeholder="Name"/><br><br>
+	  			
+	  			<label>Email</label><br>
+	            <input type="text" name="email" placeholder="Email"/><br><br>
+	            
+	            <label>
+	                Password
+	            </label><br>
+	            <input type="password" name="password" placeholder="Password"/><br><br>
+	            <button type="submit">Register</button>
+	        </form>
+        </div>
     </body>
 </html>
