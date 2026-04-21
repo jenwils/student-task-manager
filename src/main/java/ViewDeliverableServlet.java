@@ -27,20 +27,32 @@ public class ViewDeliverableServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+        out.println("<link rel='stylesheet' type='text/css' href='css/style.css'>");
+        
+        out.println("<ul class='navbar'>");
+        out.println("<li><a href='viewTasks'>Tasks</a></li>");
+        out.println("<li><a href='deadlines'>Deadlines</a></li>");   
+        out.println("<li><a href='add_task.html'>Add Task</a></li>");
+        out.println("<li style='float:right'><a href='logout'>Logout</a></li>");
+        out.println("</ul>");
         out.println("<h1>All Tasks</h1>");
 
         if (task.isEmpty()) {
             out.println("<p>No tasks found.</p>");
             out.println("<a href='index.html'>Home Page</a>");
         } else {
+        	
             out.println("<table style='border-spacing: 15px'>");
             out.println("<tr>");
             out.println("<th>Title</th>");
+            out.println("<th>Course</th>");
+            out.println("<th>Category</th>");
             out.println("<th>Description</th>");
             out.println("<th>Due Date</th>");
             out.println("<th>Days Left</th>");
             out.println("<th>Status</th>");
+            out.println("<th>Handed In</th>");
+            out.println("<th>Actions</th>");
             out.println("</tr>");
 
             LocalDate today = LocalDate.now();
@@ -52,7 +64,10 @@ public class ViewDeliverableServlet extends HttpServlet {
                 String urgencyLabel;
                 String rowColor;
 
-                if (daysLeft < 0) {
+                if (d.isHanded()) {
+                    urgencyLabel = "Handed In";
+                    rowColor = "#DBFFCC";
+                } else if (daysLeft < 0) {
                     urgencyLabel = "Overdue";
                     rowColor = "#ffcccc";
                 } else if (daysLeft <= 3) {
@@ -67,19 +82,25 @@ public class ViewDeliverableServlet extends HttpServlet {
                 }
 
                 out.println("<tr style='background-color:" + rowColor + "'>");
+                
                 out.println("<td>" + d.getTitle() + "</td>");
+                out.println("<td>" + d.getCourse() + "</td>");
+                out.println("<td>" + d.getCategory() + "</td>");
                 out.println("<td>" + d.getDescription() + "</td>");
                 out.println("<td>" + d.getDueDate() + "</td>");
                 out.println("<td>" + urgencyLabel + "</td>");
                 out.println("<td>" + d.getStatus() + "</td>");
-                out.println("<td><a href='editTask?id=" + d.getDeliverableID() + "'>Edit</a></td>");
-                out.println("<td><a href='deleteTask?id=" + d.getDeliverableID() + "'>Delete</a></td>");
-                out.println("</tr>");
+                out.println("<td>" + (d.isHanded() ? "Yes" : "No") + "</td>");
+
+                out.println("<td>"
+                    + "<a href='editTask?id=" + d.getDeliverableID() + "'>Edit</a> | "
+                    + "<a href='deleteTask?id=" + d.getDeliverableID() + "'>Delete</a>"
+                    + "</td>");
             }
 
             out.println("</table>");
-            out.println("<br><a href='deadlines'>View Upcoming Deadlines</a>");
-            out.println("<br><a href='index.html'>Home Page</a>");
+            
+           
         }
     }
 }
