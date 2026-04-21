@@ -13,7 +13,7 @@ public class AddDeliverableServlet extends HttpServlet {
 
     	HttpSession session = request.getSession(false);
     	if (session == null || session.getAttribute("studentID") == null) {
-            response.sendRedirect("login-register.html");
+            response.sendRedirect("Login_Register.html");
             return;
         }
     	
@@ -23,6 +23,7 @@ public class AddDeliverableServlet extends HttpServlet {
         String dueDate = request.getParameter("dueDate");
         String category = request.getParameter("category");
         String status = request.getParameter("status");
+        String course = request.getParameter("course");
 
         Deliverable d = new Deliverable();
         d.setTitle(title);
@@ -32,6 +33,7 @@ public class AddDeliverableServlet extends HttpServlet {
         d.setCategory(category);
         d.setStatus(status);
         d.setStudentID(studentID);
+        d.setCourse(course);
 
         TaskManager tm = new TaskManager();
         tm.createDeliverable(d);
