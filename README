@@ -21,6 +21,8 @@ The project allows users to manage their tasks using Java Servlets and a MySQL d
 
 - MySQL 8 or higher
 
+- jBCrypt library
+
 ---
 
 ## Installation Guide
@@ -37,6 +39,12 @@ The project allows users to manage their tasks using Java Servlets and a MySQL d
 
 5. Verify that mysql-connector-j-9.6.0.jar is in WEB-INF/lib.
 	If not present, download from: https://www.mysql.com/products/connector/
+	- Place the .jar file inside the WEB-INF/lib folder
+	
+6. Verify that jbcrypt-0.4.jar is in WEB-INF/lib.
+   If not present, download jBCrypt from: https://repo1.maven.org/maven2/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar
+   - Place the .jar file inside the WEB-INF/lib folder
+
 
 ### 2. Executing the App
 
@@ -44,6 +52,6 @@ The project allows users to manage their tasks using Java Servlets and a MySQL d
 
 2. Select Tomcat 10.
 
-3. In your browser, go to http://localhost:8080/student-task-manager/index.html
+3. In your browser, go to http://localhost:8080/student-task-manager/
 
 
