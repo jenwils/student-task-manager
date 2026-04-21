@@ -10,11 +10,28 @@
 
 <form action="addTask" method="post">
 
+	<label>Task Name</label><br>
     <input type="text" name="title" placeholder="Task Name" required><br><br>
 
+	<label>Due Date</label><br>
     <input type="date" name="dueDate" required><br><br>
 
+	<label>Description</label><br>
     <textarea name="description" placeholder="Task Description"></textarea><br><br>
+    
+    <label>Category</label><br>
+    <select name="category">
+        <option value="General">General</option>
+        <option value="Assignment">Assignment</option>
+        <option value="Exam">Exam</option>
+    </select><br><br>
+    
+    <label>Status</label><br>
+    <select name="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select><br><br>
 
     <button type="submit">Add Task</button>
 
@@ -32,6 +49,10 @@
 <br>
 
 <a href="viewTasks">View All Tasks</a>
+<br>
+<a href="deadlines">View Upcoming Deadlines</a>
+<br>
+<a href="logout">Logout</a>
 
 </body>
 </html>
