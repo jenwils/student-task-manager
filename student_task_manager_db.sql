@@ -17,7 +17,9 @@ CREATE TABLE deliverable (
     description VARCHAR(255),
     dueDate DATE NOT NULL, 
     isHanded BOOLEAN DEFAULT FALSE,
+    course VARCHAR(100),
     category VARCHAR(100),
+    priority VARCHAR(20),
     status VARCHAR(100),
     studentID INT,
     FOREIGN KEY (studentID) REFERENCES student(studentID)
