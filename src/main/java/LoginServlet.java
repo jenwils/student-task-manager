@@ -48,6 +48,6 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute("studentName", student.getName());
         session.setAttribute("studentEmail", student.getEmail());
  
-        response.sendRedirect("index.html");
+        response.sendRedirect("viewTasks");
     }
 }
