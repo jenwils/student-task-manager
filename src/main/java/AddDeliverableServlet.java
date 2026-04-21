@@ -12,6 +12,10 @@ public class AddDeliverableServlet extends HttpServlet {
             throws ServletException, IOException {
 
     	HttpSession session = request.getSession(false);
+    	if (session == null || session.getAttribute("studentID") == null) {
+            response.sendRedirect("login-register.html");
+            return;
+        }
     	
         int studentID = (int) session.getAttribute("studentID");
         String title = request.getParameter("title");
@@ -30,6 +34,6 @@ public class AddDeliverableServlet extends HttpServlet {
         TaskManager tm = new TaskManager();
         tm.createDeliverable(d);
 
-        response.sendRedirect("index.html");
+        response.sendRedirect("viewTasks");
     }
 }
