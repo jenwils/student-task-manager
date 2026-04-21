@@ -1,31 +1,57 @@
 import java.sql.Date;
 
 public class Deliverable {
-    private int deliverableID;
-    private String title;
-    private String description;
-    private Date dueDate;
-    private boolean isHanded;
-    private String category;
-    private String status;
-    private int studentID;
+	 public static final String STATUS_PENDING = "Pending";
+	    public static final String STATUS_IN_PROGRESS = "In Progress";
+	    public static final String STATUS_COMPLETED = "Completed";
+
+	    public static final String PRIORITY_HIGH = "High";
+	    public static final String PRIORITY_MEDIUM = "Medium";
+	    public static final String PRIORITY_LOW = "Low";
+
+	    private int deliverableID;
+	    private String title;
+	    private String description;
+	    private Date dueDate;
+	    private boolean isHanded;
+	    private String course;
+	    private String priority;
+	    private String category;
+	    private String status;
+	    private int studentID;
 
     public Deliverable() {
     }
 
     public Deliverable(String title, String description, Date dueDate, boolean isHanded,
-            String category, String status, int studentID) {
+            String course, String priority, String category, String status, int studentID) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.isHanded = isHanded;
+        this.course = course;
+        this.priority = priority;
         this.category = category;
         this.status = status;
         this.studentID = studentID;
     }
 
     public Deliverable(int deliverableID, String title, String description, Date dueDate, boolean isHanded,
-            String category, String status, int studentID) {
+            String course, String priority, String category, String status, int studentID) {
+        this.deliverableID = deliverableID;
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.isHanded = isHanded;
+        this.course = course;
+        this.priority = priority;
+        this.category = category;
+        this.status = status;
+        this.studentID = studentID;
+    }
+    
+    public Deliverable(int deliverableID, String title, String description, Date dueDate,
+            boolean isHanded, String category, String status, int studentID) {
         this.deliverableID = deliverableID;
         this.title = title;
         this.description = description;
@@ -98,6 +124,22 @@ public class Deliverable {
 
     public void setStudentID(int studentID) {
         this.studentID = studentID;
+    }
+    
+    public String getCourse() {
+        return course;
+    }
+ 
+    public void setCourse(String course) {
+        this.course = course;
+    }
+    
+    public String getPriority() {
+        return priority;
+    }
+ 
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 
     @Override
