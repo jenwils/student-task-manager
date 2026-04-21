@@ -26,7 +26,16 @@ public class SearchServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+        out.println("<link rel='stylesheet' type='text/css' href='css/style.css'>");
+        
+        out.println("<ul class='navbar'>");
+        out.println("<li><a href='viewTasks'>Tasks</a></li>");
+        out.println("<li><a href='deadlines'>Deadlines</a></li>");   
+        out.println("<li><a href='add_task.html'>Add Task</a></li>");
+        out.println("<li style='float:right'><a href='logout'>Logout</a></li>");
+        out.println("</ul>");
+        out.println("<h1>All Tasks</h1>");
+        
         out.println("<h2>Search Results:</h2>");
 
         for (Deliverable d : results) {
