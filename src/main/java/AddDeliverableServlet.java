@@ -21,14 +21,16 @@ public class AddDeliverableServlet extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         String dueDate = request.getParameter("dueDate");
+        String category = request.getParameter("category");
+        String status = request.getParameter("status");
 
         Deliverable d = new Deliverable();
         d.setTitle(title);
         d.setDescription(description);
         d.setDueDate(Date.valueOf(dueDate));
         d.setHanded(false);
-        d.setCategory("General");
-        d.setStatus("Pending");
+        d.setCategory(category);
+        d.setStatus(status);
         d.setStudentID(studentID);
 
         TaskManager tm = new TaskManager();
